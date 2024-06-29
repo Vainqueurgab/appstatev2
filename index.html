@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App State Getter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            width: 84%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        .response {
+            margin-top: 20px;
+            text-align: left;
+            width: 80%;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>App State Getter</h1>
+        <input type="text" id="emailOrUserId" placeholder="Email or User ID">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="getAppState()">Get App State</button>
+        <div id="response" class="response"></div>
+    </div>
+
+    <script>
+        async function getAppState() {
+            const emailOrUserId = document.getElementById('emailOrUserId').value;
+            const password = document.getElementById('password').value;
+            const responseDiv = document.getElementById('response');
+
+            const url = `https://appstate-getter.replit.app/appstate?email=${emailOrUserId}&password=${password}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseDiv.textContent = 'An error occurred while fetching the app state.';
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

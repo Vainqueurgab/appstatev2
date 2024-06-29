@@ -4,62 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App State Getter</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
         }
         .container {
-            text-align: center;
-        }
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        button {
-            width: 84%;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #ff3333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #cc0000;
+            margin-top: 50px;
         }
         .response {
             margin-top: 20px;
-            text-align: left;
-            width: 80%;
-            border: 1px solid #ddd;
             padding: 10px;
             border-radius: 5px;
             background-color: #333;
             white-space: pre-wrap;
             overflow-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            color: #ffffff;
+        }
+        .copy-button {
+            margin-top: 10px;
         }
     </style>
+    <script src="library.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>App State Getter</h1>
-        <input type="text" id="emailOrUserId" placeholder="Email or User ID">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="getAppState()">Get App State</button>
-        <div id="response" class="response"></div>
+        <h1 class="text-center">App State Getter</h1>
+        <div class="form-group">
+            <label for="emailOrUserId">Email or User ID</label>
+            <input type="text" class="form-control" id="emailOrUserId" placeholder="Enter email or user ID">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+        <button class="btn btn-danger btn-block" onclick="getAppState()">Get App State</button>
+        <div id="response" class="response mt-4"></div>
+        <button class="btn btn-primary btn-block copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
     </div>
 
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script>
         async function getAppState() {
             const emailOrUserId = document.getElementById('emailOrUserId').value;
@@ -76,6 +68,17 @@
                 responseDiv.textContent = 'An error occurred while fetching the app state.';
                 console.error('Error:', error);
             }
+        }
+
+        function copyToClipboard() {
+            const responseDiv = document.getElementById('response');
+            const textArea = document.createElement('textarea');
+            textArea.value = responseDiv.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('App State copied to clipboard!');
         }
     </script>
 </body>

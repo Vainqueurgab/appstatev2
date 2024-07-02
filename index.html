@@ -7,9 +7,88 @@
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #121212;
+        *{
+       margin: 0;
+       padding: 0;
+       font-family: sans>-serif;
+       box-sizing: border-box;
+       }
+         body{
+              background-image: url(https://i.ibb.co/n77c9KR/image.jpg);
+              background-position: center;
+              babackground-size: cover;
+              background-attachment: fixed;
+              background-repeat: no-repeat; 
+        }
+          body {
+              display: flex;
+              justify-content: center;
+              align-item: center;
+              min-height: 100vh;
+              flex-direction: column;
+        
+        }
+           .container {
+             max-width: 400px;
+             margin: 0 auto;
+             padding: 20px;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 3.1);
+    }
+
+        .game-container {
+            background-color: transparent;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 3.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .checkboxes {
+            margin-bottom: 20px;
+        }
+
+        .checkbox {
+            margin: 0 10px;
+            transform: scale(1.5);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #D3D3D3;
+            color: #fff;
+        }
+        
+        .container {
+            margin-top: 50px;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
             color: #ffffff;
+        }
+        .copy-button {
+            margin-top: 10px;
         }
         .container {
             margin-top: 50px;
@@ -32,7 +111,7 @@
     <script src="library.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="game-container">
         <h1 class="text-center">App State Getter</h1>
         <div class="form-group">
             <label for="emailOrUserId">Email or User ID</label>
